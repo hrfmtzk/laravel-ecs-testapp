@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  web:
+    build:
+      context: ./ecs_docker/web/
+    network_mode: host
+  app:
+    build:
+      context: .
+      dockerfile: ecs_docker/app/Dockerfile
+    network_mode: host
+    environment:
+      APP_KEY: base64:5Jz4TZqeyp3rk6r1oTR6snqEH0sAsiaut+xuxA0o1Y0=
+      APP_DEBUG: "true"
+      LOG_LEVEL: debug
